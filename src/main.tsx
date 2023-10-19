@@ -7,7 +7,7 @@ import store from "./store/store"; // Importez votre store Redux
 import App from "./App";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./assets/typography/font.scss";
-import "./index.css";
+import "./index.scss";
 
 const theme = createTheme({
   typography: {

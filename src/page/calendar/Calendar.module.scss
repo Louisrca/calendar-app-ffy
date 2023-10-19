@@ -5,6 +5,7 @@
   grid-template-columns: 4fr 1fr;
   .schedularCalendar {
     grid-column: 1;
+    height: 100%;
   }
   .sidebar {
     grid-column: 2;

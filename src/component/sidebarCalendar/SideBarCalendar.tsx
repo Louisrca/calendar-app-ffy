@@ -14,16 +14,26 @@ export default function SideBarCalendar() {
           views={["day", "month", "year"]}
           onChange={(selectedDate: any) => setDate(selectedDate)}
           sx={{
-            color: "white",
+            "MuiDateCalendar-root": {
+              height: "auto",
+            },
             "& .MuiDayCalendar-header span": {
-              color: "white",
+              color: "rgba(255, 255, 255, 1)",
+              fontSize: "1rem",
+              fontWeight: "500",
             },
             "&  .MuiDayCalendar-weekContainer button": {
               color: "white",
+              fontSize: "1rem",
+              fontWeight: "500",
+              marginTop: "2rem",
             },
 
             "& .MuiPickersDay-today": {
               border: "2px solid white !important",
+            },
+            "& .MuiSvgIcon-root": {
+              fill: "white",
             },
           }}
         />

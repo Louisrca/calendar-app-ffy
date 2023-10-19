@@ -19,7 +19,7 @@ export default function Calendar() {
   // };
 
   return (
-    <section className={s.calendarPage}>
+    <main className={s.calendarPage}>
       <div className={s.schedularCalendar}>
         <SchedularCalendar />
       </div>
@@ -29,6 +29,6 @@ export default function Calendar() {
           <SideBarCalendar />
         </LocalizationProvider>
       </div>
-    </section>
+    </main>
   );
 }
