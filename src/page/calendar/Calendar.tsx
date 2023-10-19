@@ -20,9 +20,10 @@ export default function Calendar() {
 
   return (
     <section className={s.calendarPage}>
-      <div className={s.grid}>
+      <div className={s.schedularCalendar}>
         <SchedularCalendar />
       </div>
+
       <div className={s.sidebar}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <SideBarCalendar />

@@ -4,8 +4,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store"; // Importez votre store Redux
 
-import App from "./App.tsx";
+import App from "./App";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import "./assets/typography/font.scss";
 import "./index.css";
 
 const theme = createTheme({
