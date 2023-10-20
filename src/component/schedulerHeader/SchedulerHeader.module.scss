@@ -1,0 +1,13 @@
+.schedulHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2.5rem;
+  border-bottom: var(--gray-secondary-color) solid;
+
+  .dateTitle {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+}

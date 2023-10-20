@@ -17,14 +17,16 @@ export default function SchedulList() {
   ];
   return (
     <section className={s.schedulList}>
-      {hoursOfDay.map((hour) => (
-        <div className={s.schedulTimeLine}>
+      {hoursOfDay.map((hour, key) => (
+        <div className={s.schedulTimeLine} key={key}>
           <div className={s.schedulHour}>{hour}</div>
           <div className={s.schedulItem}>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
+            <div className={s.schedulItemContent}>
+              <p>test</p>
+              <p>test</p>
+              <p>test</p>
+              <p>test</p>
+            </div>
           </div>
         </div>
       ))}

@@ -6,7 +6,7 @@ import s from "./Calendar.module.scss";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import SideBarCalendar from "../../component/sidebarCalendar/SideBarCalendar";
-import SchedularCalendar from "../../component/schedulerCalendar/SchedulerCalendar";
+import SchedulerCalendar from "../../component/schedulerCalendar/SchedulerCalendar";
 
 export default function Calendar() {
   const [calendarTitle] = useState("");
@@ -20,8 +20,8 @@ export default function Calendar() {
 
   return (
     <main className={s.calendarPage}>
-      <div className={s.schedularCalendar}>
-        <SchedularCalendar />
+      <div className={s.schedulerCalendar}>
+        <SchedulerCalendar />
       </div>
 
       <div className={s.sidebar}>
