@@ -5,30 +5,6 @@
   padding: 3.75rem 0 3.75rem 0;
   color: var(--gray-primary-color);
   font-weight: 500;
-
-  .schedulTimeLine {
-    display: grid;
-    grid-template-columns: 1fr 10fr;
-
-    .schedulHour {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      height: 9rem;
-    }
-    .schedulItem {
-      display: flex;
-      align-self: center;
-      flex-direction: row;
-      height: 7.5rem;
-      border-top: solid var(--gray-secondary-color);
-      .schedulItemContent {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 1440px) {
