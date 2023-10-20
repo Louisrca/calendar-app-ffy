@@ -22,3 +22,10 @@
   background: rgb(148, 1, 1) !important;
   transition: 0.5s;
 }
+
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  .buttonBlue {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

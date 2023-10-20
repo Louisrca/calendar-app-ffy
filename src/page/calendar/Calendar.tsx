@@ -20,15 +20,15 @@ export default function Calendar() {
 
   return (
     <main className={s.calendarPage}>
-      <div className={s.schedulerCalendar}>
+      <section className={s.schedulerCalendar}>
         <SchedulerCalendar />
-      </div>
+      </section>
 
-      <div className={s.sidebar}>
+      <section className={s.sidebar}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <SideBarCalendar />
         </LocalizationProvider>
-      </div>
+      </section>
     </main>
   );
 }

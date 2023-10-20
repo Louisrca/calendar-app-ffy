@@ -1,7 +1,9 @@
 import { useState } from "react";
 import s from "./SideBarCalendar.module.scss";
 import { DateCalendar } from "@mui/x-date-pickers";
+
 import dayjs from "dayjs";
+import clsx from "clsx";
 
 export default function SideBarCalendar() {
   const [date, setDate] = useState(dayjs());
@@ -14,27 +16,24 @@ export default function SideBarCalendar() {
           views={["day", "month", "year"]}
           onChange={(selectedDate: any) => setDate(selectedDate)}
           sx={{
-            "& .MuiDayCalendar-root": {
-              height: "50rem",
-              overflow: "auto",
+            "& .css-1tvctpl-MuiDateCalendar-root": {
+              minHeight: "800px",
             },
             "& .MuiDayCalendar-header span": {
               color: "rgba(255, 255, 255, 1)",
               fontSize: "1rem",
               fontWeight: "500",
             },
-            "& .MuiPickersSlideTransition-root": {
-              height: "100%",
-            },
+
             "& .MuiDayCalendar-weekContainer button": {
               color: "white",
-              fontSize: "1rem",
+              fontSize: "0.75rem",
               fontWeight: "500",
-              marginTop: "2rem",
+              marginTop: "1.5rem",
             },
 
             "& .MuiPickersDay-today": {
-              border: "2px solid white !important",
+              border: "1px solid white !important",
             },
             "& .MuiSvgIcon-root": {
               fill: "white",

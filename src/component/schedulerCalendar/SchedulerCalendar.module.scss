@@ -1,3 +1,9 @@
 .schedulCalendar {
-  padding: 3rem 6.75em 0 3rem;
+  padding: 3rem 6.75em 0 6.75rem;
+}
+
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  .schedulCalendar {
+    padding: 3rem 3rem 0 3rem;
+  }
 }
