@@ -2,12 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store/store"; // Importez votre store Redux
-
-import App from "./App";
+import store from "./store/store";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./assets/typography/font.scss";
 import "./index.scss";
+import App from "./App";
 
 const theme = createTheme({
   typography: {

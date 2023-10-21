@@ -1,23 +1,43 @@
 import { useState } from "react";
 import s from "./SideBarCalendar.module.scss";
 import { DateCalendar } from "@mui/x-date-pickers";
-
 import dayjs from "dayjs";
-import clsx from "clsx";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import { setDate } from "../../reducer/CalendarCurrentDate";
 
 export default function SideBarCalendar() {
-  const [date, setDate] = useState(dayjs());
-  console.log(date.date() + "/" + (date.month() + 1) + "/" + date.year());
+  const currentDate = useSelector(
+    (state: RootState) => state.CalendarCurrentDate.currentDate
+  );
+  const dispatch = useDispatch();
+
+  const [dateSelected, setDateSelected] = useState(currentDate);
+  console.log(
+    dateSelected.year() +
+      "-" +
+      (dateSelected.month() + 1) +
+      "-" +
+      dateSelected.date()
+  );
 
   return (
     <section className={s.sidebarCalendar}>
       <div className={s.calendarContent}>
         <DateCalendar
           views={["day", "month", "year"]}
-          onChange={(selectedDate: any) => setDate(selectedDate)}
+          onChange={(selectedDate: Date | null) => {
+            if (selectedDate) {
+              const newDate = dayjs(selectedDate);
+
+              setDateSelected(newDate);
+              dispatch(setDate(newDate));
+            }
+          }}
           sx={{
             "& .css-1tvctpl-MuiDateCalendar-root": {
-              minHeight: "800px",
+              height: "800px !important",
+              minHeight: "800px !important",
             },
             "& .MuiDayCalendar-header span": {
               color: "rgba(255, 255, 255, 1)",

@@ -4,10 +4,24 @@ import {
   Scheduler,
   DayView,
   Appointments,
+  AppointmentTooltip,
 } from "@devexpress/dx-react-scheduler-material-ui";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export default function SchedulList() {
-  const currentDate = "2018-11-01";
+  const reduxCurrentDate = useSelector(
+    (state: RootState) => state.CalendarCurrentDate.currentDate
+  );
+
+  const currentDate =
+    reduxCurrentDate.year() +
+    "-" +
+    (reduxCurrentDate.month() + 1) +
+    "-" +
+    reduxCurrentDate.date();
+
+  console.log(currentDate);
   const schedulerData = [
     {
       startDate: "2018-11-01T09:45",
@@ -20,7 +34,7 @@ export default function SchedulList() {
     {
       startDate: "2018-11-01T09:00",
       endDate: "2018-11-01T10:00",
-      title: "Meeting",
+      title: "Sport",
       backgroundColor: "rgba(244, 23, 187, 0.15)",
       borderColor: "rgb(244, 23, 187) solid 4px",
       color: "rgb(36, 61, 111)",
@@ -28,7 +42,7 @@ export default function SchedulList() {
     {
       startDate: "2018-11-01T09:00",
       endDate: "2018-11-01T11:00",
-      title: "Meeting",
+      title: "Session Game",
       backgroundColor: "rgba(24, 23, 17, 0.15)",
       borderColor: "rgb(24, 23, 17) solid 4px",
       color: "rgb(36, 61, 111)",
@@ -37,7 +51,10 @@ export default function SchedulList() {
       startDate: "2018-11-01T12:00",
       endDate: "2018-11-01T13:30",
       title: "Go to a gym",
-      cellBackgroundColor: "green ",
+      comment: "hello",
+      backgroundColor: "rgba(24, 213, 17, 0.15)",
+      borderColor: "rgb(24, 213, 17) solid 4px",
+      color: "rgb(36, 61, 111)",
     },
   ];
 
@@ -77,6 +94,7 @@ export default function SchedulList() {
           appointmentComponent={Appointment}
           appointmentContentComponent={AppointmentContent}
         />
+        <AppointmentTooltip showCloseButton showOpenButton />
       </Scheduler>
     </section>
   );
