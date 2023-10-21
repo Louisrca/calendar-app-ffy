@@ -29,7 +29,6 @@ export default function SideBarCalendar() {
           onChange={(selectedDate: Date | null) => {
             if (selectedDate) {
               const newDate = dayjs(selectedDate);
-
               setDateSelected(newDate);
               dispatch(setDate(newDate));
             }

@@ -87,7 +87,7 @@ export default function SchedulList() {
 
   return (
     <section className={s.schedulList}>
-      <Scheduler data={schedulerData}>
+      <Scheduler data={schedulerData} locale={"fr-FR"} >
         <ViewState currentDate={currentDate} />
         <DayView startDayHour={9} endDayHour={21} />
         <Appointments

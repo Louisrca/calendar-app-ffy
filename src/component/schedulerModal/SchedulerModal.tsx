@@ -1,29 +1,32 @@
-import { useState, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import s from "./SchedulerModal.module.scss";
 import CardWrapper from "../cardWrapper/CardWrapper";
-import clsx from "clsx";
+
+type ModalProps = {
+  isClose: boolean;
+  handleClose: () => void;
+};
 
 export default function SchedulerModal({
   children,
-  kind = "active",
+  handleClose,
+  isClose,
+  kind = "default",
   ...props
 }: PropsWithChildren & {
-  kind?: "active" | "inactive";
-}): JSX.Element {
-  const [isClose, setIsClose] = useState(false);
+  kind?: "default" | "active" | "inactive";
+} & ModalProps): JSX.Element {
   return (
     <section
-      className={clsx(s.schedulerModal, { [s.inactive]: kind === "inactive" })}
+      className={s.schedulerModal}
       {...props}
-      // style={isClose ? { display: "none" } : { display: "block" }}
+      style={isClose ? { display: "block" } : { display: "none" }}
     >
-      <div
-        className={s.closeModal}
-        onClick={() => {
-          isClose ? setIsClose(isClose) : setIsClose(!isClose);
-        }}
-      ></div>
-      <CardWrapper>{children}</CardWrapper>
+      <div className={s.wrapper}>
+        <CardWrapper>{children}</CardWrapper>{" "}
+      </div>
+
+      <div className={s.closeModal} onClick={handleClose}></div>
     </section>
   );
 }

@@ -1,7 +1,8 @@
 .cardWrapper {
   width: 40rem;
   height: fit-content;
+  position: relative;
+  z-index: 30;
   background-color: white;
   color: var(--primary-color);
-  z-index: 30;
 }
