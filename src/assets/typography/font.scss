@@ -1,11 +1,14 @@
 :root {
   font-family: "Montserrat", sans-serif;
+  --font-family-montserrat: "Montserrat", sans-serif;
+  --font-default : var(--font-family-montserrat)
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   --primary-color: rgb(36, 61, 111);
+  --secondary-color: rgba(92, 95, 108, 1)
   --gray-primary-color: rgba(164, 176, 195, 1);
   --gray-secondary-color: rgba(243, 243, 243, 1);
 

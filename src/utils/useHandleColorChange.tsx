@@ -1,8 +1,10 @@
 import { useState } from "react";
 
 export const useHandleColorChange = () => {
-  const [color, setColor] = useState("rgba(0, 0, 0, 1)");
-  const [backgroundColor, setBackgroundColor] = useState("rgba(0, 0, 0, 0.25)");
+  const [color, setColor] = useState("rgba(98, 0, 238, 1)");
+  const [backgroundColor, setBackgroundColor] = useState(
+    "rgba(98, 0, 238, 0.15)"
+  );
   const handleColorChange = (e: any) => {
     const hexColor = e.target.value;
     const hexBackgroundColor = e.target.value;
