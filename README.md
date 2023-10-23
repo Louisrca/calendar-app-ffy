@@ -1,24 +1,23 @@
-# App de calendrier programmable 
+# Application de calendrier programmable 
 
 Technos utilisées : 
-- Vite
-- 
+- React & Vite
+- Typescript
+- Scss
+- Librairie : MUI & DevExpress
+- redux
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Lien vers le test 
+[Live Test](https://ffy-calendar-app.vercel.app/)
 
-- Configure the top-level `parserOptions` property like this:
+## Commentaires sur le test
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+Je me suis amusé à élaborer ce petit calendrier programmable.
+J'ai essayé de me rapprocher au mieux de la maquette figma fournie avec les consignes du test.  
+Je remarque toutefois qu'il y a des axes d'améliorations : 
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Ajouter un bouton permettant de consulter le calendrier pour la version mobile,
+- Réussir à enlever la visibilité de la date dans le header du calendrier horaire,
+- Ameliorer mon code pour le rendre plus lisible et maintenable par d'autres membres de l'équipe de dev.
+
