@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { useHandleColorChange } from "../../utils/useHandleColorChange";
 import { DateIcon } from "../../common/svg/dateIcon/dateIcon";
 import { TimeIcon } from "../../common/svg/timeIcon/timeIcon";
-import { SubmitButton } from "../ui/inputButton/submitButton";
+import { SubmitButton } from "../ui/submitButton/submitButton";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { useSavedScheduler } from "../../utils/useSavedScheduler";
 import uuid from "react-uuid";
+import { useRecurringAppointment } from "../../utils/useRecurringAppointment";
 type FormInputValue = {
   id: string;
   title: string;
@@ -18,18 +20,21 @@ type FormInputValue = {
   color: string;
   backgroundColor: string;
   borderLeft: string;
+  rRule: string;
 };
 export default function ModalForm() {
+  const { parseDate, datediff } = useRecurringAppointment();
   const { color, backgroundColor, handleColorChange } = useHandleColorChange();
-  const currentDate = useSelector(
-    (state: RootState) => state.CalendarCurrentDate.currentDate
-  );
   const [endHour, setEndHour] = useState("");
   const [startHour, setStartHour] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const currentDate = useSelector(
+    (state: RootState) => state.CalendarCurrentDate.currentDate
+  );
+
   const initialFormInputValue: FormInputValue = {
-    id: "urerYRUERTZEtzeTZET32532",
+    id: "",
     title: "",
     startDate: "",
     endDate: "",
@@ -39,17 +44,14 @@ export default function ModalForm() {
     color: "",
     backgroundColor: "",
     borderLeft: "",
+    rRule: "",
   };
   const [schedulers, setSchedulers] = useState<FormInputValue[]>(() => {
-    // get the todos from localstorage
-    const savedTodos = localStorage.getItem("scheduler");
-    // if there are todos stored
-    if (savedTodos) {
-      // return the parsed the JSON object back to a javascript object
-      return JSON.parse(savedTodos);
-      // otherwise
+    const savedScheduler = localStorage.getItem("scheduler");
+
+    if (savedScheduler) {
+      return JSON.parse(savedScheduler);
     } else {
-      // return an empty array
       return [];
     }
   });
@@ -80,6 +82,9 @@ export default function ModalForm() {
       color: newCurrentColor,
       backgroundColor: newCurrentBackgroundColor,
       borderLeft: newCurrentColor + "solid 4px",
+      rRule: `FREQ=DAILY;COUNT=${
+        datediff(parseDate(newStartDate), parseDate(newEndDate)) + 1
+      }`,
     }));
     localStorage.setItem("scheduler", JSON.stringify(schedulers));
   }, [
@@ -93,7 +98,7 @@ export default function ModalForm() {
     endHour,
   ]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = () => {
     setSchedulers([...schedulers, formInputValue]);
     localStorage.setItem("scheduler", JSON.stringify(schedulers));
   };
@@ -157,10 +162,7 @@ export default function ModalForm() {
               className={s.endDate}
               style={{ backgroundColor: backgroundColor }}
               onChange={(e) => {
-                setFormInputValue({
-                  ...formInputValue,
-                  [e.target.name]: e.target.value,
-                });
+                setEndDate(e.target.value);
               }}
             />
           </div>

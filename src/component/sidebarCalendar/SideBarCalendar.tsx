@@ -12,7 +12,7 @@ export default function SideBarCalendar() {
   );
   const dispatch = useDispatch();
 
-  const [dateSelected, setDateSelected] = useState(currentDate);
+  const [, setDateSelected] = useState(currentDate);
 
   return (
     <section className={s.sidebarCalendar}>

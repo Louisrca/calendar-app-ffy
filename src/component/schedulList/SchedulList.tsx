@@ -4,14 +4,13 @@ import {
   Scheduler,
   DayView,
   Appointments,
-  AppointmentTooltip,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { useEffect, useState } from "react";
+import { useSavedScheduler } from "../../utils/useSavedScheduler";
 
 export default function SchedulList() {
-  const [schedulersData, setSchedulersData] = useState([]);
+  const { schedulersData, setSchedulersData } = useSavedScheduler();
   const reduxCurrentDate = useSelector(
     (state: RootState) => state.CalendarCurrentDate.currentDate
   );
@@ -23,19 +22,6 @@ export default function SchedulList() {
     "-" +
     reduxCurrentDate.date();
 
-  useEffect(() => {
-    const savedTodos = localStorage.getItem("scheduler");
-    // if there are todos stored
-    if (savedTodos) {
-      // return the parsed JSON object back to a JavaScript object
-      setSchedulersData(JSON.parse(savedTodos));
-    } else {
-      // set your state to an empty array when there are no todos in localStorage
-      setSchedulersData([]);
-    }
-  }, []);
-
-  console.log(schedulersData);
   const Appointment = ({ children, style, data, ...restProps }: any) => (
     <Appointments.Appointment
       {...restProps}
@@ -44,14 +30,31 @@ export default function SchedulList() {
         ...style,
         backgroundColor: data.backgroundColor,
         borderLeft: data.borderLeft,
+        display: "flex",
+        flexDirection: "row",
       }}
     >
       {children}
+      <button
+        style={{ zIndex: "50", width: "30px", height: "30px", border: "none" }}
+        onClick={() => {
+          const updatedSchedulersData = schedulersData.filter(
+            (item) => item.id !== data.id
+          );
+          setSchedulersData(updatedSchedulersData);
+          localStorage.setItem(
+            "scheduler",
+            JSON.stringify(updatedSchedulersData)
+          );
+        }}
+      >
+        click
+      </button>
     </Appointments.Appointment>
   );
 
   const AppointmentContent = (props: any) => {
-    const { data, style } = props;
+    const { style } = props;
     return (
       <Appointments.AppointmentContent
         style={{
@@ -67,15 +70,14 @@ export default function SchedulList() {
     <section className={s.schedulList}>
       <Scheduler data={schedulersData} locale={"fr-FR"}>
         <ViewState currentDate={currentDate} />
+
         <DayView startDayHour={9} endDayHour={21} />
+
         <Appointments
           appointmentComponent={Appointment}
           appointmentContentComponent={AppointmentContent}
         />
-        <AppointmentTooltip showCloseButton showOpenButton />
       </Scheduler>
-      
-      
     </section>
   );
 }
