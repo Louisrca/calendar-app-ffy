@@ -96,3 +96,52 @@
     color: var(--primary-color) !important;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .schedulerForm {
+    width: 5rem;
+
+    .title {
+      .titleInput {
+        font-size: 1rem;
+      }
+    }
+    .colorPircker {
+      gap: 0.5rem;
+      .inputColor[type="color"] {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+    .schedulerData {
+      color-scheme: white;
+
+      .schedulerDate {
+        margin: 1rem 0 1rem 0;
+
+        gap: 0.5rem;
+        .inputDate {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+
+      .schedulerTime {
+        margin: 1.5rem 0 1.5rem 0;
+
+        gap: 1rem;
+        .inputTime {
+          gap: 0.5rem;
+        }
+      }
+    }
+
+    input {
+      height: 1.125rem;
+    }
+  }
+}

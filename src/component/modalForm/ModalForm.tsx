@@ -6,7 +6,6 @@ import { TimeIcon } from "../../common/svg/timeIcon/timeIcon";
 import { SubmitButton } from "../ui/submitButton/submitButton";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { useSavedScheduler } from "../../utils/useSavedScheduler";
 import uuid from "react-uuid";
 import { useRecurringAppointment } from "../../utils/useRecurringAppointment";
 type FormInputValue = {
@@ -132,6 +131,7 @@ export default function ModalForm() {
             borderLeft: `solid 0.375rem ${color}`,
           }}
         ></div>
+
         <input
           type="color"
           required
