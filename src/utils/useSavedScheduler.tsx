@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-type FormInputValue = {
+export type FormInputValue = {
   id: string;
   title: string;
   startDate: string;

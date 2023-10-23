@@ -97,9 +97,11 @@ export default function ModalForm() {
     endHour,
   ]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setSchedulers([...schedulers, formInputValue]);
     localStorage.setItem("scheduler", JSON.stringify(schedulers));
+    window.location.href = "/";
   };
 
   return (

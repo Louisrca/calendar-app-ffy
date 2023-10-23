@@ -1,4 +1,5 @@
 import s from "./SchedulList.module.scss";
+import { CrossIcon } from "../../common/svg/crossIcon/crossIcon";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
@@ -8,9 +9,12 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { useSavedScheduler } from "../../utils/useSavedScheduler";
+import { useState, useEffect } from "react";
+import { FormInputValue } from "../../utils/useSavedScheduler";
 
 export default function SchedulList() {
-  const { schedulersData, setSchedulersData } = useSavedScheduler();
+  // const { schedulersData, setSchedulersData } = useSavedScheduler();
+  const [schedulersData, setSchedulersData] = useState<FormInputValue[]>([]);
   const reduxCurrentDate = useSelector(
     (state: RootState) => state.CalendarCurrentDate.currentDate
   );
@@ -22,6 +26,16 @@ export default function SchedulList() {
     "-" +
     reduxCurrentDate.date();
 
+  useEffect(() => {
+    const savedScheduler = localStorage.getItem("scheduler");
+
+    if (savedScheduler) {
+      setSchedulersData(JSON.parse(savedScheduler));
+    } else {
+      setSchedulersData([]);
+    }
+  }, []);
+
   const Appointment = ({ children, style, data, ...restProps }: any) => (
     <Appointments.Appointment
       {...restProps}
@@ -32,6 +46,7 @@ export default function SchedulList() {
         borderLeft: data.borderLeft,
         display: "flex",
         flexDirection: "row",
+        justifyContent: "space-between",
       }}
     >
       {children}
@@ -46,9 +61,10 @@ export default function SchedulList() {
             "scheduler",
             JSON.stringify(updatedSchedulersData)
           );
+          window.location.href = "/";
         }}
       >
-        click
+        <CrossIcon kind="lightIcon" fill="transparent" />
       </button>
     </Appointments.Appointment>
   );
