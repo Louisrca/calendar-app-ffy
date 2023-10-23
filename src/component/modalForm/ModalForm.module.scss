@@ -4,8 +4,9 @@
   .title {
     .titleInput {
       background-color: transparent;
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin: 0;
+      padding: 0.5rem 0;
     }
     .titleInput::placeholder {
       color: var(--secondary-color);
@@ -75,6 +76,9 @@
   }
 
   .schedulerCommment {
+    .commentInput {
+      padding: 0.5rem 0;
+    }
     .commentInput::placeholder {
       color: var(--secondary-color);
       font-family: "Montserrat", sans-serif;
@@ -99,8 +103,6 @@
 
 @media screen and (max-width: 600px) {
   .schedulerForm {
-    width: 5rem;
-
     .title {
       .titleInput {
         font-size: 1rem;
@@ -118,12 +120,17 @@
 
       .schedulerDate {
         margin: 1rem 0 1rem 0;
-
-        gap: 0.5rem;
+        gap: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
         .inputDate {
           display: flex;
+          // width: 100%;
           flex-wrap: wrap;
-          flex-direction: row;
+          flex-direction: column;
           justify-content: flex-start;
           align-items: center;
           gap: 0.5rem;
@@ -141,7 +148,7 @@
     }
 
     input {
-      height: 1.125rem;
+      height: 1rem;
     }
   }
 }
