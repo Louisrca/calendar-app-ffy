@@ -5,13 +5,11 @@
   padding: 3.75rem 0 3.75rem 0;
   color: var(--gray-primary-color);
   font-weight: 500;
-  
 }
 
 @media screen and (max-width: 1440px) {
   .schedulList {
-    height: 50rem;
-
+    height: 30rem;
     .schedulHour {
       height: 4rem;
     }
@@ -19,7 +17,7 @@
 }
 @media screen and (max-width: 1280px) {
   .schedulList {
-    height: 30rem;
+    height: 27rem;
     .schedulHour {
       height: 4rem;
     }
@@ -28,7 +26,6 @@
 
 @media screen and (max-width: 600px) {
   .schedulList {
-    // height: auto;
     .schedulHour {
       height: 4rem;
     }

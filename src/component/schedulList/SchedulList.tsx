@@ -8,8 +8,10 @@ import {
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { useEffect, useState } from "react";
 
 export default function SchedulList() {
+  const [schedulersData, setSchedulersData] = useState([]);
   const reduxCurrentDate = useSelector(
     (state: RootState) => state.CalendarCurrentDate.currentDate
   );
@@ -21,43 +23,19 @@ export default function SchedulList() {
     "-" +
     reduxCurrentDate.date();
 
-  console.log(currentDate);
-  const schedulerData = [
-    {
-      startDate: "2018-11-01T09:45",
-      endDate: "2018-11-01T11:00",
-      title: "Meeting",
-      backgroundColor: "rgba(244, 241, 187, 0.15)",
-      borderColor: "rgb(244, 241, 187) solid 4px",
-      color: "rgb(36, 61, 111)",
-    },
-    {
-      startDate: "2018-11-01T09:00",
-      endDate: "2018-11-01T10:00",
-      title: "Sport",
-      backgroundColor: "rgba(244, 23, 187, 0.15)",
-      borderColor: "rgb(244, 23, 187) solid 4px",
-      color: "rgb(36, 61, 111)",
-    },
-    {
-      startDate: "2018-11-01T09:00",
-      endDate: "2018-11-01T11:00",
-      title: "Session Game",
-      backgroundColor: "rgba(24, 23, 17, 0.15)",
-      borderColor: "rgb(24, 23, 17) solid 4px",
-      color: "rgb(36, 61, 111)",
-    },
-    {
-      startDate: "2018-11-01T12:00",
-      endDate: "2018-11-01T13:30",
-      title: "Go to a gym",
-      comment: "hello",
-      backgroundColor: "rgba(24, 213, 17, 0.15)",
-      borderColor: "rgb(24, 213, 17) solid 4px",
-      color: "rgb(36, 61, 111)",
-    },
-  ];
+  useEffect(() => {
+    const savedTodos = localStorage.getItem("scheduler");
+    // if there are todos stored
+    if (savedTodos) {
+      // return the parsed JSON object back to a JavaScript object
+      setSchedulersData(JSON.parse(savedTodos));
+    } else {
+      // set your state to an empty array when there are no todos in localStorage
+      setSchedulersData([]);
+    }
+  }, []);
 
+  console.log(schedulersData);
   const Appointment = ({ children, style, data, ...restProps }: any) => (
     <Appointments.Appointment
       {...restProps}
@@ -65,7 +43,7 @@ export default function SchedulList() {
       style={{
         ...style,
         backgroundColor: data.backgroundColor,
-        borderLeft: data.borderColor,
+        borderLeft: data.borderLeft,
       }}
     >
       {children}
@@ -78,7 +56,7 @@ export default function SchedulList() {
       <Appointments.AppointmentContent
         style={{
           ...style,
-          color: data.color,
+          color: "rgb(36, 61, 111)",
         }}
         {...props}
       />
@@ -87,7 +65,7 @@ export default function SchedulList() {
 
   return (
     <section className={s.schedulList}>
-      <Scheduler data={schedulerData} locale={"fr-FR"} >
+      <Scheduler data={schedulersData} locale={"fr-FR"}>
         <ViewState currentDate={currentDate} />
         <DayView startDayHour={9} endDayHour={21} />
         <Appointments
@@ -96,6 +74,8 @@ export default function SchedulList() {
         />
         <AppointmentTooltip showCloseButton showOpenButton />
       </Scheduler>
+      
+      
     </section>
   );
 }

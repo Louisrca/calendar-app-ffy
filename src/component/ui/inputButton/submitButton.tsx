@@ -1,26 +1,27 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from "react";
 import { clsx } from "clsx";
-import s from "./inputButton.module.scss";
+import s from "./submitButton.module.scss";
 
 type ButtonProps = {
   colorButton: string;
 };
-export const InputButton = ({
+export const SubmitButton = ({
   children,
   colorButton,
-  kind = "inputButton",
+  kind = "submitButton",
   ...props
 }: PropsWithChildren &
   ButtonProps &
   ButtonHTMLAttributes<HTMLElement> & {
-    kind?: "inputButton" | "buttonRed";
+    kind?: "submitButton" | "submitButtonRed";
   }) => {
   return (
     <button
-      className={clsx(s.buttonBlue, {
-        [s.buttonRed]: kind === "buttonRed",
+      type="submit"
+      className={clsx(s.submitButton, {
+        [s.submitButtonRed]: kind === "submitButtonRed",
       })}
-      style={{ color: colorButton }}
+      style={{ backgroundColor: colorButton }}
       {...props}
     >
       {children}

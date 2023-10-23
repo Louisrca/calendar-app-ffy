@@ -10,13 +10,6 @@ import SchedulerCalendar from "../../component/schedulerCalendar/SchedulerCalend
 
 export default function Calendar() {
   const [calendarTitle] = useState("");
-  console.log(calendarTitle);
-  // const calendar = useSelector((state: RootState) => state.CalendarTaskReducer);
-  // const dispatch = useDispatch();
-
-  // const handleSetTitle = () => {
-  //   dispatch(setTitle(calendarTitle));
-  // };
 
   return (
     <main className={s.calendarPage}>

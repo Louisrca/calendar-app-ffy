@@ -13,13 +13,6 @@ export default function SideBarCalendar() {
   const dispatch = useDispatch();
 
   const [dateSelected, setDateSelected] = useState(currentDate);
-  console.log(
-    dateSelected.year() +
-      "-" +
-      (dateSelected.month() + 1) +
-      "-" +
-      dateSelected.date()
-  );
 
   return (
     <section className={s.sidebarCalendar}>
@@ -34,10 +27,6 @@ export default function SideBarCalendar() {
             }
           }}
           sx={{
-            "& .css-1tvctpl-MuiDateCalendar-root": {
-              height: "800px !important",
-              minHeight: "800px !important",
-            },
             "& .MuiDayCalendar-header span": {
               color: "rgba(255, 255, 255, 1)",
               fontSize: "1rem",
