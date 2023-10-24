@@ -1,24 +1,5 @@
 # Application de calendrier programmable 
 
-### Pour run le projet :
-``` 
-npm install 
-# or 
-npm install --force
-
-npm run dev
-```
-
-
-
-Technos utilisées : 
-- React & Vite
-- Typescript
-- Scss
-- Librairie : MUI & DevExpress
-- redux
-
-
 ## Lien vers le test 
 [Live Test](https://ffy-calendar-app.vercel.app/)
 
@@ -32,4 +13,24 @@ Je remarque toutefois qu'il y a des axes d'améliorations :
 - Réussir à enlever la visibilité de la date dans le header du calendrier horaire,
 - Ameliorer mon code pour le rendre plus lisible et maintenable par d'autres membres de l'équipe de dev.
 - Exploiter davantage Redux pour le stockage des données.
+
+
+### Pour run le projet :
+``` 
+npm install 
+# or 
+npm install --force
+
+npm run dev
+```
+
+
+Technos utilisées : 
+- React & Vite
+- Typescript
+- Scss
+- Librairie : MUI & DevExpress
+- redux
+
+
 
