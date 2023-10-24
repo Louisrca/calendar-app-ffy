@@ -11,7 +11,7 @@ Je remarque toutefois qu'il y a des axes d'améliorations :
 
 - Ajouter un bouton permettant de consulter le calendrier pour la version mobile,
 - Réussir à enlever la visibilité de la date dans le header du calendrier horaire,
-- Ameliorer mon code pour le rendre plus lisible et maintenable par d'autres membres de l'équipe de dev (ajout de tests par exemples).
+- Ameliorer mon code pour le rendre plus lisible et maintenable par d'autres membres de l'équipe de dev.
 - Exploiter davantage Redux pour le stockage des données.
 
 
